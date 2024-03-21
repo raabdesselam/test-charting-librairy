@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
+
 export const api = axios.create({
   withCredentials: false,
   baseURL: "https://api.carbonintensity.org.uk/",
@@ -11,7 +12,7 @@ const errorHandler = (error: AxiosError) => {
 
   // logging only errors that are not 401
   if (statusCode && statusCode !== 401) {
-    console.error(error.message)
+    console.error(error.message);
   }
 
   return Promise.reject(error);

@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { EnergySourceTableComponent } from "./components/energySrouceTableComponent";
 import { Flex } from "antd";
-import { EnergySourcePieChartAnalytics } from "./components/energySourcePieChartAnalyticsComponent";
+import { PieChartAnalytics } from "./components/pieChartAnalyticsComponent";
 import { useGenerateApi } from "./hooks/api";
+import { LineChartAnalysisComponent } from "./components/lineChartAnalysisComponent";
 
 const queryClient = new QueryClient();
 
@@ -27,18 +27,14 @@ const MainApp: FC = () => {
       <h1>GB Fuel type power generation production</h1>
       <h3>Data from the past 30 minutes</h3>
       <Flex justify="space-evenly">
-        <EnergySourceTableComponent {...{ report: data }} />
-        <EnergySourcePieChartAnalytics
+        <LineChartAnalysisComponent {...{}} />
+        {/* here you call yor component with parameter */}
+
+        <PieChartAnalytics
           {...{
             report: data,
             title: {
               text: "Current mix of energy generation",
-            },
-            tooltip: {
-              valueSuffix: "%",
-            },
-            subtitle: {
-              text: 'Source: <a href="https://gridwatch.co.uk" target="_default">gridwatch</a>',
             },
           }}
         />
